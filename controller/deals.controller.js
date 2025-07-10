@@ -100,53 +100,29 @@ const updateDeal = async (req, res, next) => {
     const deal = await Deal.findById(id);
     if (!deal) throw new Error(ERROR.DEAL_NOT_FOUND);
 
-    // Step 1: Find the original pipeline using old stage
-    const oldPipeline = await Pipeline.findOne({ stages: deal.stageId }).lean();
-    if (!oldPipeline) throw new Error(ERROR.PIPELINE_NOT_FOUND);
-
-    // Step 2: Clone stages
-    const clonedStages = await Promise.all(
-      oldPipeline.stages.map(async (stageId) => {
-        const stage = await Stage.findById(stageId).lean();
-        const newStage = new Stage({
-          ...stage,
-          _id: undefined,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        });
-        return await newStage.save();
-      })
-    );
-
-    // Step 3: Create new pipeline
-    const newPipeline = new Pipeline({
-      name: oldPipeline.name,
-      createdBy: oldPipeline.createdBy,
-      stages: clonedStages.map((s) => s._id),
-      createdAt: new Date(),
-      updatedAt: new Date(),
+    //  Remove deal from old stage
+    await Stage.findByIdAndUpdate(deal.stageId, {
+      $pull: { deals: id }
     });
-    const savedPipeline = await newPipeline.save();
 
-    // Step 4: Update deal with new stage and pipeline
+    //  Add deal to new stage
+    await Stage.findByIdAndUpdate(stageId, {
+      $push: { deals: id }
+    });
+
+    // Update deal's stageId
     const updatedDeal = await Deal.findByIdAndUpdate(
       id,
-      {
-        stageId,
-        pipeline: savedPipeline._id,
-      },
+      { stageId },
       { new: true }
     );
 
-    return sendSuccess(res, "Deal moved & new pipeline created", {
-      updatedDeal,
-      newPipelineId: savedPipeline._id,
-    });
-
+    return sendSuccess(res, "Deal moved successfully", updatedDeal);
   } catch (err) {
     next(err);
   }
 };
+
 
 
 // const updateDeal = async (req, res, next) => {

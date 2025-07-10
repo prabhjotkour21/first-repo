@@ -4,7 +4,7 @@ const pipelineSchema = new Schema(
   {
     name: {
       type: String,
-      default: "Default Pipeline",
+      default: "Pipeline",
     },
 
     stages: {

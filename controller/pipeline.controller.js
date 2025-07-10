@@ -103,6 +103,7 @@ const getAllPipelines = async (req, res, next) => {
         message: "Default stages fetched successfully",
         data: {
           pipelineId: pipeline?._id ?? null,
+          pipelineName: pipeline?.name ?? "",
           stages: cleanDefaultStages,
         },
       });
@@ -113,6 +114,7 @@ const getAllPipelines = async (req, res, next) => {
       message: "Custom stages fetched successfully",
       data: {
         pipelineId: pipeline?._id ?? null,
+        pipelineName: pipeline?.name ?? "",
         stages: cleanStages,
       },
     });
