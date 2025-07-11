@@ -40,6 +40,8 @@ const googleLogin = async (req, res, next) => {
     }
 
     // Generate JWT Token
+
+    
     const token = jwt.sign(
           {
             username: user.name,
