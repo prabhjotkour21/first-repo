@@ -8,6 +8,8 @@ import * as  ERROR  from "../common/error_message.js";
 
 import {createPipeline} from "./pipeline.controller.js";
 
+import {Pipeline} from "../model/pipeline.model.js";
+
 const googleLogin = async (req, res, next) => {
   try {
     const { name, email, picture, sub: socialId } = req.body;

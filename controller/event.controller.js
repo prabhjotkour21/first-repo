@@ -2,6 +2,10 @@ import { Event } from "../model/event.model.js";
 import { sendSuccess } from "../utils/responseHandler.js";
 import * as ERROR from "../common/error_message.js"
 // Create Event
+import { syncCalendar } from "../utils/fastapi.service.js";
+
+
+
 
 const createEvent = async (req, res, next) => {
   try {
@@ -94,5 +98,24 @@ const deleteEvent = async (req, res, next) => {
     next(err); // Pass to global error handler
   }
 };
+
+
+// Sync Calendar with FastAPI
+export async function syncCalendarHandler(req, res) {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+
+    if (!token) {
+      return res.status(401).json({ message: "Missing auth token" });
+    }
+
+    const data = await syncCalendar(token);
+    return res.status(200).json(data);
+  } catch (err) {
+    return res.status(500).json({ message: "Sync failed", error: err.message });
+  }
+}
+
+
 
 export { createEvent, getAllEvents, getEventById, updateEvent, deleteEvent };
