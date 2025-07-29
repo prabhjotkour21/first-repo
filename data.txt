@@ -3,3 +3,23 @@
   // { "name": "Proposal Sent", "order": 4 },
   // { "name": "Negotiation", "order": 5 },
   // { "name": "Closed", "order": 6 }
+ 
+for manager 
+{
+  "name":"revenue Test",
+  "email":"revenueTest1@gmail.com",
+  "password":"test 1",
+  "role":"manager"
+}
+
+
+for mamber 
+
+{
+  "name":"revenue Test",
+  "email":"revenueTest2@gmail.com",
+  "password":"test 2"
+}
+
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJldmVudWUgVGVzdCIsImVtYWlsIjoicmV2ZW51ZVRlc3QyQGdtYWlsLmNvbSIsInVzZXJJZCI6IjY4N2I0NzVmYzZkMTYzNDU1ODA4ZWY4MSIsInJvbGUiOiJtZW1iZXIiLCJpYXQiOjE3NTI5MTMyOTgsImV4cCI6MTc1MzUxODA5OH0.b_9AlpJFV25mzdSPmo26GcdKezcUBsDm9bA2UJWT-FQ

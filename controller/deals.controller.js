@@ -1,9 +1,10 @@
 import { Deal } from "../model/deal.model.js";
 import { Stage } from "../model/stage.model.js";
 import { Pipeline } from "../model/pipeline.model.js";
+import {User} from "../model/user.js"
 import * as ERROR from "../common/error_message.js";
 import { sendSuccess } from "../utils/responseHandler.js";
-
+import {ClientCompany} from "../model/clientCompany.model.js"
 const createDeal = async (req, res, next) => {
   try {
     const {
@@ -13,21 +14,26 @@ const createDeal = async (req, res, next) => {
       stageId,
       code_currency,
       endDate,
+      clientCompanyIds, 
+      status
     } = req.body;
-
+    
     const createdBy = req.user?.userId;
-
+    // console.log(req.body.clientCompanyIds)
     //  Basic validation
     if (!title) throw new Error(ERROR.DEAL_TITLE_REQUIRED);
     if (!value) throw new Error(ERROR.DEAL_VALUE_REQUIRED);
     if (!stageId) throw new Error(ERROR.STAGE_ID_REQUIRED);
 
     if (!createdBy) throw new Error(ERROR.USER_ID_REQUIRED);
-
+    if (clientCompanyIds) {
+      const clientExists = await ClientCompany.findById(clientCompanyIds);
+      if (!clientExists) throw new Error(ERROR.CLIENT_COMPANY_NOT_FOUND);
+    }
     //  Get pipeline using stageId
     const stage = await Stage.findOne({ _id:stageId });
     // if (!stage) throw new Error(ERROR.PIPELINE_NOT_FOUND);
-   console.log(stage)
+  //  console.log(stage)
     //  Create new deal
     const newDeal = new Deal({
       title,
@@ -35,13 +41,21 @@ const createDeal = async (req, res, next) => {
       value,
       stageId,       
       createdBy,
-      code_currency: code_currency || "INR",
       endDate,
+      clientCompanyIds: clientCompanyIds ?[clientCompanyIds] : [],
+      status: status || "InProgress",
+      code_currency: code_currency || "INR",
     });
 
     const savedDeal = await newDeal.save();
     stage.deals.push(savedDeal._id);
     await stage.save();
+    if (clientCompanyIds) {
+      await ClientCompany.findByIdAndUpdate(
+        clientCompanyIds,
+        { $addToSet: { dealIds: savedDeal._id } }
+      );
+    }
   
     return sendSuccess(res, "Deal created successfully", savedDeal, 201);
   } catch (err) {
@@ -51,26 +65,32 @@ const createDeal = async (req, res, next) => {
 const getDealsByPipeline = async (req, res, next) => {
   try {
     const { pipelineId } = req.params;
-
+  
     if (!pipelineId) throw new Error(ERROR.PIPELINE_ID_REQUIRED);
 
     const pipeline = await Pipeline.findById(pipelineId);
     if (!pipeline) throw new Error(ERROR.PIPELINE_NOT_FOUND);
-
+    const findUser=await User.findById(req.user.userId)
+    // console.log(findUser)
+    const org=findUser.organization
+    // console.log(org)
+ 
+    // console.log(findUser)
     // Fetch all stages in this pipeline
     const stages = await Stage.find({
       _id: { $in: pipeline.stages },
       isDeleted: false,
-    }).sort({ order: 1 });
 
+    }).sort({ order: 1 });
+    // console.log(stages)
     // Attach deals to each stage
     const stageWithDeals = await Promise.all(
       stages.map(async (stage) => {
         const deals = await Deal.find({
           stageId: stage._id,
           isDeleted: false,
-        });
-
+        }).populate({path:"clientCompanyIds",match:{ OrganizationId: org}});
+        // console.log(deals)
         return {
           _id: stage._id,
           name: stage.name,
@@ -123,34 +143,6 @@ const updateDeal = async (req, res, next) => {
   }
 };
 
-
-
-// const updateDeal = async (req, res, next) => {
-//   try {
-//     const { id } = req.params;
-//     const updates = req.body;
-
-//     //  Check required fields
-//     if (!id) throw new Error(ERROR.DEAL_ID_REQUIRED);
-
-//     //  Optional: Validate stageId and get pipeline again if stage changed
-//     if (updates.stageId) {
-//       const pipeline = await Pipeline.findOne({ stages: updates.stageId });
-//       if (!pipeline) throw new Error(ERROR.PIPELINE_NOT_FOUND);
-//       updates.pipeline = pipeline._id; // auto-update pipeline
-//     }
-
-//     const updatedDeal = await Deal.findByIdAndUpdate(id, updates, {
-//       new: true,
-//     });
-
-//     if (!updatedDeal) throw new Error(ERROR.DEAL_NOT_FOUND);
-
-//     return sendSuccess(res, "Deal updated successfully", updatedDeal);
-//   } catch (err) {
-//     next(err);
-//   }
-// };
 
 const deleteDeal = async (req, res, next) => {
   try {

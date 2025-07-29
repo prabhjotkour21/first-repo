@@ -1,6 +1,6 @@
 
 const errorHandler=(err, req, res, next)=> {
-  console.error(err); //    for debugging
+  // console.error(err); //    for debugging
 
   const messageArray = err.message ? err.message.split("::") : [];
 
@@ -18,8 +18,25 @@ const errorHandler=(err, req, res, next)=> {
     message:
       process.env.ENVIRONMENT === "production"
         ? "Validation failed."
-        : err.message || "Something went wrong.",
+        :  "Something went wrong. Please try again later."
   });
 }
 
 export {errorHandler};
+
+
+// const errorHandler = (err, req, res, next) => {
+//   const statusCode = err.statusCode || 500;
+//   const responseCode = err.responseCode || statusCode;
+//   const isProduction = process.env.ENVIRONMENT === "production";
+
+//   res.status(statusCode).json({
+//     status: false,
+//     response_code: responseCode,
+//     message: isProduction && statusCode === 500
+//       ? "Something went wrong. Please try again later."
+//       : err.message || "Unexpected error",
+//   });
+// };
+
+// export { errorHandler };

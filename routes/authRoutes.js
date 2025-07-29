@@ -2,37 +2,37 @@ import {Router} from "express";
 import { googleLogin} from "../controller/googleAuth.js";
 import { createOrganization ,getOrganizations,getOrganizationById ,updateOrganization,softDeleteOrganization } from "../controller/organization.js";
 import { tokenVerify } from "../middleware/auth.js";
-import {signIn ,login,getUserById} from "../controller/auth.js";
+import {signIn ,login,getUserById,deleteUser} from "../controller/auth.js";
 
 import { updateManager } from "../controller/admin.controller.js";
 
 
-const router = Router();
+const AuthRouter  = Router();
 
-router.post("/auth/google",googleLogin )
-
-
-router.post("/signup", signIn);
+AuthRouter .post("/auth/google",googleLogin )
 
 
+AuthRouter .post("/signup", signIn);
 
-router.post("/login", login);
+AuthRouter .delete("/delete-user/:id",deleteUser)
 
-router.get("/user/:id", tokenVerify, getUserById);
+AuthRouter .post("/login", login);
 
-router.post("/organization/create", tokenVerify, createOrganization);
+AuthRouter .get("/user/:id", tokenVerify, getUserById);
 
-router.get("/organization/get", tokenVerify, getOrganizations);
+AuthRouter .post("/organization/create", tokenVerify, createOrganization);
 
-router.get("/organization/get/:id", tokenVerify, getOrganizationById);
+AuthRouter .get("/organization/get", tokenVerify, getOrganizations);
 
-router.patch("/organization/update/:id", tokenVerify, updateOrganization);
+AuthRouter .get("/organization/get/:id", tokenVerify, getOrganizationById);
 
-router.delete("/organization/delete/:id", tokenVerify, softDeleteOrganization);
+AuthRouter .patch("/organization/update/:id", tokenVerify, updateOrganization);
+
+AuthRouter .delete("/organization/delete/:id", tokenVerify, softDeleteOrganization);
 
 
-router.patch("/user-update/:id", tokenVerify, updateManager);
-export {router}
+AuthRouter .patch("/user-update/:id", tokenVerify, updateManager);
+export {AuthRouter }
 
 
 

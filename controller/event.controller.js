@@ -27,6 +27,7 @@ const createEvent = async (req, res, next) => {
 
     return sendSuccess(res, "Event created successfully", newEvent, 201);
   } catch (err) {
+    console.log(err.message)
     next(err); // Send error to global handler
   }
 };
@@ -98,24 +99,37 @@ const deleteEvent = async (req, res, next) => {
     next(err); // Pass to global error handler
   }
 };
+const filterEvent = async (req, res, next) => {
+  try {
+    const { conversationType } = req.query;
+    const validTypes = ["meet", "impromptu", "whatsapp", "mail"];
+
+    if (conversationType && !validTypes.includes(conversationType)) {
+      throw new Error(ERROR.INVALID_TYPE);
+    }
+
+    const filter = {
+      isDeleted: false,
+      ...(conversationType && {
+        $and: [
+          { conversationType: { $exists: true } },
+          { conversationType: conversationType }
+        ]
+      })
+    };
+    const events = await Event.find(filter);
+
+    res.status(200).json({
+      status: true,
+      status_code: 200,
+      message: "Events fetched successfully",
+      data: events
+    });
+  } catch (error) {
+    console.error("Error fetching filtered events:", error.message);
+    next(error);
+  }
+};
 
 
-// Sync Calendar with FastAPI
-// export async function syncCalendarHandler(req, res) {
-//   try {
-//     const token = req.headers.authorization?.split(" ")[1];
-
-//     if (!token) {
-//       return res.status(401).json({ message: "Missing auth token" });
-//     }
-
-//     const data = await syncCalendar(token);
-//     return res.status(200).json(data);
-//   } catch (err) {
-//     return res.status(500).json({ message: "Sync failed", error: err.message });
-//   }
-// }
-
-
-
-export { createEvent, getAllEvents, getEventById, updateEvent, deleteEvent };
+export { createEvent, getAllEvents, getEventById, updateEvent, deleteEvent ,filterEvent };

@@ -1,0 +1,490 @@
+db.users.updateMany(
+  { email: 'deepubisht2004@gmail.com' },
+  { $set: { inviteBy: ObjectId("687e11a94c4ddccd621416bd") } }
+)
+db.users.updateMany(
+  { email: 'deepubisht2004@gmail.com' },
+  { $set: { inviteBy: null} }
+)
+
+
+db.users.updateOne(
+  { email: "pkour6188@gmail.com" },
+  { $set: { role: "manager" } }
+)
+
+
+{
+  "status": true,
+  "status_code": 200,
+  "message": "Companies fetch successfully",
+  "data": [
+    {
+      "dealIds": [],
+      "_id": "68807ffcb01981d8e4b7df9d",
+      "OrganizationId": null,
+      "companyName": "NextGen Tech",
+      "contactNumbers": [
+        {
+          "name": "Ravi Kumar",
+          "number": "9876543210",
+          "_id": "68807ffcb01981d8e4b7df9e"
+        },
+        {
+          "name": "Anita Sharma",
+          "number": "9123456789",
+          "_id": "68807ffcb01981d8e4b7df9f"
+        }
+      ],
+      "email": "support@nextgen.com",
+      "address": "Sector 18, Noida",
+      "dealId": [],
+      "createdAt": "2025-07-23T06:23:56.074Z",
+      "updatedAt": "2025-07-23T06:23:56.074Z",
+      "__v": 0
+    },
+    {
+      "_id": "68808064366da8159583344d",
+      "OrganizationId": null,
+      "companyName": "NextGen Tech",
+      "contactNumbers": [
+        {
+          "name": "Ravi Kumar",
+          "number": "9876543210",
+          "_id": "68808064366da8159583344e"
+        },
+        {
+          "name": "Anita Sharma",
+          "number": "9123456789",
+          "_id": "68808064366da8159583344f"
+        }
+      ],
+      "email": "support@nextgen.com",
+      "address": "Sector 18, Noida",
+      "dealIds": [],
+      "createdAt": "2025-07-23T06:25:40.069Z",
+      "updatedAt": "2025-07-23T06:25:40.069Z",
+      "__v": 0
+    },
+    {
+      "_id": "6880876ac866047382f74d88",
+      "OrganizationId": {
+        "_id": "6876245ffc2d205105151205",
+        "company_name": "Boxoifcu",
+        "size": "6-10",
+        "sector": "Education",
+        "owner": "68753bf076cc5d9780ff7136",
+        "productInfo": "",
+        "isDeleted": false,
+        "createdAt": "2025-07-15T09:50:23.350Z",
+        "updatedAt": "2025-07-15T09:50:23.350Z",
+        "__v": 0
+      },
+      "companyName": "NextGen Tech",
+      "contactNumbers": [
+        {
+          "name": "Ravi Kumar",
+          "number": "9876543210",
+          "_id": "6880876ac866047382f74d89"
+        },
+        {
+          "name": "Anita Sharma",
+          "number": "9123456789",
+          "_id": "6880876ac866047382f74d8a"
+        }
+      ],
+      "email": "support@nextgen.com",
+      "address": "Sector 18, Noida",
+      "dealIds": [
+        {
+          "_id": "687b4bbeadef5b56928514a7",
+          "title": "revenue deal 2",
+          "description": "htjfodic",
+          "value": 67990,
+          "createdBy": "687b475fc6d163455808ef81",
+          "code_currency": "INR",
+          "stageId": "687b475fc6d163455808ef8b",
+          "isDeleted": false,
+          "createdAt": "2025-07-19T07:39:42.772Z",
+          "updatedAt": "2025-07-19T07:39:42.772Z",
+          "__v": 0
+        },
+        {
+          "_id": "687b4b910824b45baa5e56a3",
+          "title": "revenue deal 1",
+          "description": "htjfodic",
+          "value": 4000,
+          "createdBy": "687b475fc6d163455808ef81",
+          "code_currency": "INR",
+          "stageId": "687b475fc6d163455808ef8b",
+          "isDeleted": false,
+          "createdAt": "2025-07-19T07:38:57.339Z",
+          "updatedAt": "2025-07-19T07:38:57.339Z",
+          "__v": 0
+        }
+      ],
+      "createdAt": "2025-07-23T06:55:38.125Z",
+      "updatedAt": "2025-07-23T06:55:38.125Z",
+      "__v": 0
+    }
+  ]
+}
+
+
+db.clientcompanies.updateMany(
+  { idDeleted: false },
+  {
+    $unset: { idDeleted: 1 },
+    $set: { isDeleted: false }
+  }
+);
+
+
+prabhjot token  team mamber-
+
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InByYWJoam90IGtvdXIiLCJlbWFpbCI6ImthdXJwcmFiaGpvdC5kZXZAZ21haWwuY29tIiwidXNlcklkIjoiNjg4MGFjMDRmNTk4NDMzZGQyMWQwY2RiIiwicm9sZSI6Im1lbWJlciIsImlhdCI6MTc1MzI2MzEwOCwiZXhwIjoxNzUzODY3OTA4fQ.V16B8u6JDiZpTSY1ZS9pIcHol4wMUsWYIpkwlxCxKws
+
+
+jot kour token manger :
+
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvdCBrb3VyIiwiZW1haWwiOiJwa291cjYxODhAZ21haWwuY29tIiwidXNlcklkIjoiNjg4MGFhZGRmNTk4NDMzZGQyMWQwY2EwIiwicm9sZSI6Im1hbmFnZXIiLCJpYXQiOjE3NTMyNjI4MTQsImV4cCI6MTc1Mzg2NzYxNH0.6BLxrA14WBnx1a6Rmm1WSmgCMSVfXG0VCffB3zVt2io
+
+
+{
+   "OrganizationId":"6880b008f87f877e733a28d6",
+   "companyName":"Google",
+   "contactNumbers":[
+     {
+     "name":"harpreet",
+     "number":"6879590455"
+     },
+     {
+       "name":"vijay",
+     "number":"9050328512"
+     }
+     ],
+     "email":"google@gmail.com",
+     "address":"UK",
+     "dealIds":[
+       "6880b161f87f877e733a290d"
+       ]
+}
+
+
+
+
+{
+  "organizationId": "64e1fc182bd0efc2d5e9c813",
+  "summary": {
+    "win": {
+      "totalRevenue": 150000,
+      "count": 3,
+      "deals": [
+        {
+          "title": "Deal with ABC",
+          "value": 50000,
+          "status": "win",
+          "riskScore": 0.2,
+          "nextStep": "Schedule Demo"
+        },
+        {
+          "title": "Client A Acquisition",
+          "value": 70000,
+          "status": "win",
+          "riskScore": 0.4,
+          "nextStep": "-"
+        },
+        {
+          "title": "Referral B2B",
+          "value": 30000,
+          "status": "win",
+          "riskScore": 0.1,
+          "nextStep": "Final negotiation"
+        }
+      ]
+    },
+    "Loss": {
+      "totalRevenue": 20000,
+      "count": 1,
+      "deals": [
+        {
+          "title": "Cold lead - RetailX",
+          "value": 20000,
+          "status": "Loss",
+          "riskScore": 0.8,
+          "nextStep": "-"
+        }
+      ]
+    },
+    "InProgress": {
+      "totalRevenue": 60000,
+      "count": 2,
+      "deals": [
+        {
+          "title": "Lead from Campaign",
+          "value": 30000,
+          "status": "InProgress",
+          "riskScore": 0.5,
+          "nextStep": "Follow up"
+        },
+        {
+          "title": "Ongoing negotiation",
+          "value": 30000,
+          "status": "InProgress",
+          "riskScore": 0.6,
+          "nextStep": "Send proposal"
+        }
+      ]
+    }
+  }
+}
+
+{
+  win:{
+    value:11,
+    count:3
+  },
+  lose:{
+    value:11,
+    count:1
+  },
+  InProgress:{
+    value:11,
+    count:2
+  },
+
+  deals:[
+    {
+          "title": "Cold lead - RetailX",
+          "value": 20000,
+          "status": "Loss",
+          "riskScore": 0.8,
+          "nextStep": "-"
+        }
+    {
+          "title": "Deal with ABC",
+          "value": 50000,
+          "status": "win",
+          "riskScore": 0.2,
+          "nextStep": "Schedule Demo"
+        },
+        {
+          "title": "Client A Acquisition",
+          "value": 70000,
+          "status": "win",
+          "riskScore": 0.4,
+          "nextStep": "-"
+        },
+        {
+          "title": "Referral B2B",
+          "value": 30000,
+          "status": "win",
+          "riskScore": 0.1,
+          "nextStep": "Final negotiation"
+        }
+      {
+          "title": "Lead from Campaign",
+          "value": 30000,
+          "status": "InProgress",
+          "riskScore": 0.5,
+          "nextStep": "Follow up"
+        },
+        {
+          "title": "Ongoing negotiation",
+          "value": 30000,
+          "status": "InProgress",
+          "riskScore": 0.6,
+          "nextStep": "Send proposal"
+        }
+  ]
+}
+
+
+
+
+{
+  "meetingId": "12345",
+  "totalDuration": 120,  // seconds
+  "speakerStats": [
+    {
+      "speaker": "Speaker_1",
+      "speakingTime": 50,
+      "percentage": 41.67
+    },
+    {
+      "speaker": "Speaker_2",
+      "speakingTime": 70,
+      "percentage": 58.33
+    }
+  ]
+}
+
+
+response email-bot
+
+{
+  "prompt": "Hi team, we need to finalize the Q3 marketing budget before Friday...",
+  "description": "Marketing update email",
+  "product_details": "Growth marketing project",
+  "requested_sections": ["Email Summary", "Action Points"],
+  "userEmail": "jane.doe@example.com"
+}
+
+
+[
+  {
+    "question": "What is the launch deadline?",
+    "question_speaker": "Speaker 2",
+    "answer": "We aim to launch by next Friday.",
+    "answer_speaker": "Speaker 1"
+  }
+]
+
+
+
+{
+  "status": true,
+  "status_code": 200,
+  "message": "Companies fetch successfully",
+  "data": {
+    "totalCompanies": 2,
+    "totalPages": 1,
+    "currentPage": 1,
+    "limit": 10,
+    "hasNextPage": false,
+    "hasPrevPage": false,
+    "nextPage": null,
+    "prevPage": null,
+    "companies": [
+      {
+        "_id": "6880bbfb32a51f1811a7b716",
+        "OrganizationId": {
+          "_id": "6880b008f87f877e733a28d6",
+          "company_name": "Boxofic",
+          "size": "2-10",
+          "sector": "delhi",
+          "owner": "6882167d4224578020e13b10",
+          "productInfo": "",
+          "isDeleted": false,
+          "createdAt": "2025-07-23T09:48:56.882Z",
+          "updatedAt": "2025-07-23T09:48:56.882Z",
+          "__v": 0
+        },
+        "companyName": "Google",
+        "contactNumbers": [
+          {
+            "name": "Harpreet",
+            "number": "9876543210",
+            "_id": "6880bbfb32a51f1811a7b717"
+          },
+          {
+            "name": "Vijay",
+            "number": "9050328512",
+            "_id": "6880bbfb32a51f1811a7b718"
+          }
+        ],
+        "email": "contact@google.com",
+        "address": "California, USA",
+        "dealIds": [
+          {
+            "_id": "6880bbb832a51f1811a7b70d",
+            "title": "New Website Project",
+            "description": "Website revamp for client",
+            "value": 25000,
+            "createdBy": "6880aaddf598433dd21d0ca0",
+            "code_currency": "INR",
+            "stageId": "6880aadef598433dd21d0ca6",
+            "endDate": "2025-08-15T00:00:00.000Z",
+            "isDeleted": false,
+            "clientCompanyIds": [],
+            "status": "InProgress",
+            "createdAt": "2025-07-23T10:38:48.358Z",
+            "updatedAt": "2025-07-23T10:38:48.358Z",
+            "__v": 0
+          },
+          {
+            "_id": "6880bbc232a51f1811a7b711",
+            "title": "New Website Project",
+            "description": "Website revamp for client",
+            "value": 25000,
+            "createdBy": "6880aaddf598433dd21d0ca0",
+            "code_currency": "INR",
+            "stageId": "6880aadef598433dd21d0ca8",
+            "endDate": "2025-08-15T00:00:00.000Z",
+            "isDeleted": false,
+            "clientCompanyIds": [],
+            "status": "InProgress",
+            "createdAt": "2025-07-23T10:38:58.691Z",
+            "updatedAt": "2025-07-23T10:38:58.691Z",
+            "__v": 0
+          },
+          {
+            "_id": "6880c53ef1709ccb849c7f95",
+            "title": "New Website Project",
+            "description": "Website revamp for client",
+            "value": 25000,
+            "createdBy": "6880aaddf598433dd21d0ca0",
+            "code_currency": "INR",
+            "stageId": "6880aadef598433dd21d0ca6",
+            "endDate": "2025-08-15T00:00:00.000Z",
+            "isDeleted": false,
+            "clientCompanyIds": [
+              "6880bbfb32a51f1811a7b716"
+            ],
+            "status": "InProgress",
+            "createdAt": "2025-07-23T11:19:26.391Z",
+            "updatedAt": "2025-07-23T11:19:26.391Z",
+            "__v": 0
+          }
+        ],
+        "isDeleted": false,
+        "createdAt": "2025-07-23T10:39:55.181Z",
+        "updatedAt": "2025-07-23T11:19:26.476Z",
+        "__v": 0
+      },
+      {
+        "_id": "6880c2ef4e201191ccfd5dc6",
+        "OrganizationId": {
+          "_id": "6880b008f87f877e733a28d6",
+          "company_name": "Boxofic",
+          "size": "2-10",
+          "sector": "delhi",
+          "owner": "6882167d4224578020e13b10",
+          "productInfo": "",
+          "isDeleted": false,
+          "createdAt": "2025-07-23T09:48:56.882Z",
+          "updatedAt": "2025-07-23T09:48:56.882Z",
+          "__v": 0
+        },
+        "companyName": "Google",
+        "contactNumbers": [
+          {
+            "name": "Harpreet",
+            "number": "9876543210",
+            "_id": "6880c2ef4e201191ccfd5dc7"
+          },
+          {
+            "name": "Vijay",
+            "number": "9050328512",
+            "_id": "6880c2ef4e201191ccfd5dc8"
+          }
+        ],
+        "email": "contact@google.com",
+        "address": "California, USA",
+        "dealIds": [],
+        "isDeleted": false,
+        "createdAt": "2025-07-23T11:09:35.217Z",
+        "updatedAt": "2025-07-23T11:09:35.217Z",
+        "__v": 0
+      }
+    ]
+  }
+}
+
+
+
+step 1- user log as a manager =>
+step-2-user company create 
+step-3=- deal create
+step-4== client -company A add 

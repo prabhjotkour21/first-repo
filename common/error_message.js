@@ -3,50 +3,82 @@ export const PASSWORD = "200::422::Password is require.";
 export const DOB = "200::422::Date of Birth is require.";
 
 export const NEW_PASSWORD = "200::422::New Password is require.";
+export const INVALID_TYPE  ="200::400::Invalid conversationType"
+export const SERVICE="200::400::Invalid or missing service.";
+export const TeamMembers="200::404::No team members found."
+export const INVALID_PAYLOAD = "Request body is missing or invalid.";
+export const GMAIL_LINK="200::400::Missing required fields."
+export const SERVICE_TOKEN="200::400::No tokens found of"
+export const MEETING_ID_MISSING="200::404::Meeting ID is required. "
+//  Common Auth Errors
+export const USER_AUTH_ERROR = "200::422::User not authenticated.";
+export const GOOGLE_AUTH_MISSING = "200::422::Missing required Google credentials.";
 
-export const GOOGLE_AUTH_MISSING="200::422::Missing required Google credentials.";
+export const CODE_NOT="200::400::No authorization code found ."
 
-export const CONFIRM_PASSWORD = "200::422:: Confirm Password is require.";
+export const TOKEN_NOT_FOUND="200::404::Token missing."
 
-export const REFERRAL_CODE = "200::422:: Referral Code is require.";
 
-export const REFERRAL_BY = "200::422:: Referral Code is require.";
+// Create Event
+export const CREATE_EVENT_FAILED = "500::500::Failed to create calendar event.";
+export const EVENT_OWNER_NOT_FOUND = "200::422::Event owner not found or not authenticated.";
+
+//  Update Event
+export const GOOGLE_EVENT_NOT_FOUND = "404::404::Google event not found.";
+export const GOOGLE_EVENT_UPDATE_FAILED = "500::500::Failed to update Google Calendar event.";
+export const MONGODB_EVENT_UPDATE_FAILED = "500::500::Failed to update event in database.";
+
+//  Delete Event
+export const DELETE_EVENT_FAILED = "500::500::Failed to delete calendar event.";
+export const EVENT_DELETE_AUTH_ERROR = "401::401::Unauthorized or token missing for deleting event.";
+
+//  OAuth Callback
+export const OAUTH_CODE_MISSING = "200::422::Google Auth code is missing.";
+export const GOOGLE_USERINFO_FAILED = "500::500::Failed to fetch user info from Google.";
+export const GOOGLE_TOKEN_EXCHANGE_FAILED = "500::500::Failed to exchange code for tokens.";
+
+export const CONFIRM_PASSWORD = "200::422:: Confirm Password is required.";
+
+export const REFERRAL_CODE = "200::422:: Referral Code is required.";
+
+export const REFERRAL_BY = "200::422:: Referral Code is required.";
 
 export const INVALID_REFERRAL_CODE = "200::422::Invalid referral Code!";
 
-export const  INTERNAL_ERROR = "400::400:: Something went wrong.";
+export const INTERNAL_ERROR = "400::400:: Something went wrong.";
 
 export const DATA_NOT_FOUND = "200::404:: Data not Found.";
 
 export const USER_NOT_FOUND = "200::422:: User not Found.";
 
-export const EMAIL = "200::422:: Email is require.";
+export const EMAIL = "200::422:: Email is required.";
 
+export const ORGANIZATION = "200::422::Organization is required.";
 
-
+export const ORGANIZATION_NOT_FOUND="200::400::Invalid OrganizationId. No such organization exists."
 // common/error_message.js
-export const PIPELINE_ID_REQUIRED = "Pipeline ID is required";
+export const PIPELINE_ID_REQUIRED = "200::422::Pipeline ID is required";
 
-export const PIPELINE_NOT_FOUND = "Pipeline not found";
+export const PIPELINE_NOT_FOUND = "200::400::Pipeline not found";
 
 export const STAGE_ALREADY_EXISTS = "Stage already exists in this pipeline";
 
-export const STAGE_NOT_IN_PIPELINE = "Stage not found in pipeline";
+export const STAGE_NOT_IN_PIPELINE = "200::400::Stage not found in pipeline";
 
-export const STAGE_UPDATE_FAILED = "Unable to update stage in pipeline";
+export const STAGE_UPDATE_FAILED = "200::301::Unable to update stage in pipeline";
 
-export const DEAL_TITLE_REQUIRED = "Deal title is required";
-export const DEAL_VALUE_REQUIRED = "Deal value is required";
+export const DEAL_TITLE_REQUIRED = "200::400::Deal title is required";
+export const DEAL_VALUE_REQUIRED = "200::400::Deal value is required";
 
-export const USER_ID_REQUIRED = "User ID is missing";
+export const DEAL_NOT_FOUND="200::400::One or more DealIds are invalid or do not exist."
 
+export const USER_ID_REQUIRED = "200::400::User ID is missing";
 
-export const  STAGE_NOT_FOUND="200::404::Stage not found.";
+export const STAGE_NOT_FOUND = "200::404::Stage not found.";
 
-export const STAGE_ID_REQUIRED= "200::400::Stage ID is required.";
+export const STAGE_ID_REQUIRED = "200::400::Stage ID is required.";
 
-
-export const TAGE_ID_REQUIRED= "200::400::Stage ID is required.";
+export const TAGE_ID_REQUIRED = "200::400::Stage ID is required.";
 
 export const NO_MANAGERS_FOUND = "200::404::No managers found.";
 
@@ -64,14 +96,16 @@ export const STAGE_NAME_REQUIRED = "200::422::Stage name is required.";
 
 export const STAGE_ORDER_REQUIRED = "200::422::Stage order is required.";
 
-export const ACCESS_DENIED = "200::403::Access denied: insufficient permissions";
+export const ACCESS_DENIED =
+  "200::403::Access denied: insufficient permissions";
 
 export const SOCIALID = "200::422:: Social Id is require.";
 
-export const TOKEN_MISSING = "200::401::Unauthorized: Token missing or malformed";
+export const TOKEN_MISSING =
+  "200::401::Unauthorized: Token missing or malformed";
 
-export const TOKEN_INVALID = "200::401::Unauthorized: Token is invalid or expired";
-
+export const TOKEN_INVALID =
+  "200::401::Unauthorized: Token is invalid or expired";
 
 export const COUNTRY_CODE = "200::422:: Country code is require.";
 export const COUNTRY_SHORT_CODE = "200::422:: Country Short code is require.";
@@ -82,13 +116,15 @@ export const FULL_NAME = "200::422::Full Name is require.";
 
 export const LAST_NAME = "200::422:: Last Name is require.";
 
-export const USERNAME = "200::422:: Usename is require.";
+export const USERNAME = "200::422:: username is require.";
 
 export const IMAGE = "200::422:: Image is require.";
 
 export const COUNTRYNAME = "200::422:: ContryName is require.";
 
-export const NO_HALLIV_ACCOUNT ="200::422::No account registered with this email Id.";
+export const CLIENT_COMPANY_NOT_FOUND="200::400::Client Company not found."
+export const NO_HALLIV_ACCOUNT =
+  "200::422::No account registered with this email Id.";
 
 // exports.ACCOUNT_TYPE = "200::422::Account type is require.";
 

@@ -74,7 +74,7 @@ const signIn = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   const { email, password } = req.body;
-
+  console.log(email,password)
   try {
     if (!email) throw new Error(ERROR.EMAIL);
     if (!password) throw new Error(ERROR.PASSWORD);
@@ -82,7 +82,9 @@ const login = async (req, res, next) => {
     const userExists = await User.findOne({ email });
     console.log(userExists)
     if (!userExists) throw new Error(ERROR.USER_NOT_FOUND);
-
+  if (!userExists.password) {
+      throw new Error("You signed up with Google. Please login with Google.");
+    }
     const valid = await argon2.verify(userExists.password, password);
     if (!valid) throw new Error(ERROR.INVALID_CREDENTIALS);
 
@@ -141,4 +143,22 @@ const getUserById = async (req, res, next) => {
   }
 };
 
-export { signIn, login,getUserById  };
+
+const deleteUser=async(req,res,next)=>{
+  const userId=req.params.id
+     try{
+      // console.log(userId)
+      const findUser=await User.findById(userId)
+      if(!findUser){
+        throw new Error(ERROR.USER_NOT_FOUND);
+      }
+      findUser.isDeleted=true
+      await findUser.save()
+    
+    return sendSuccess(res, "User deleted successfully", findUser);
+     }catch(error){
+      console.log(error.message)
+      next(error)
+     }
+}
+export { signIn, login,getUserById ,deleteUser  };

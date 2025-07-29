@@ -1,0 +1,18 @@
+runtime: nodejs20
+instance_class: F1
+
+handlers:
+  - url: /.*
+    script: auto
+
+env_variables:
+  PORT: "5000"
+  MONGO_URI: ${MONGO_URI}
+  JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+  BASE_URL: ${BASE_URL}
+  GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+  GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+  REDIRECT_URI: ${REDIRECT_URI}
+
+automatic_scaling:
+  max_instances: 2

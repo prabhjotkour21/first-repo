@@ -41,6 +41,24 @@ const dealSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    clientCompanyIds:[
+      {
+        type:Schema.Types.ObjectId,
+        ref:"ClientCompany",
+        default: null  // deal can exist without a client
+      }
+    ],
+    status:{
+      type:String,
+      enum:["win","Loss","InProgress"],
+      default:"InProgress"
+    },
+    riskScore:{
+
+    },
+    next_step:{
+      
+    }
   },
   { timestamps: true }
 );
